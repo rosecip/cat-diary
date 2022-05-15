@@ -1,1 +1,1 @@
-An online cat diary! Save a record of your favorite cats and journal your experiences with them.
+An online cat diary! Save records of your favorite cats and journal your experiences with them.
