@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace cat-diary-client build",
+    "dev": "yarn workspace cat-diary-server dev",
+    "dev:debug": "yarn workspace cat-diary-server dev:debug",
+    "heroku-postbuild": "yarn workspace cat-diary-client build",
+    "start": "yarn workspace cat-diary-server start",
+    "dev:cypress": "yarn workspace cat-diary-server dev:e2e",
+    "e2e:open": "yarn workspace cat-diary-e2e e2e:open",
+    "e2e:run": "yarn workspace cat-diary-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^14.19"
+  }
+}
