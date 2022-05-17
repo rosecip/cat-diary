@@ -7,31 +7,33 @@ import "../assets/scss/main.scss";
 import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
-import IndexPage from "./IndexPage"
+import IndexPage from "./IndexPage";
+import CatShow from "./CatShow";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const fetchCurrentUser = async () => {
     try {
-      const user = await getCurrentUser()
-      setCurrentUser(user)
-    } catch(err) {
-      setCurrentUser(null)
+      const user = await getCurrentUser();
+      setCurrentUser(user);
+    } catch (err) {
+      setCurrentUser(null);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchCurrentUser()
-  }, [])
+    fetchCurrentUser();
+  }, []);
 
   return (
     <Router>
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/">
-          <Redirect to="/cats"/>
+          <Redirect to="/cats" />
         </Route>
         <Route exact path="/cats" component={IndexPage} />
+        <Route exact path="/cats/:id" component={CatShow} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>

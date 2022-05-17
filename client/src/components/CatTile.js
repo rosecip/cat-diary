@@ -1,6 +1,6 @@
 import React from "react";
 
-const CatShow = (props) => {
+const CatTile = (props) => {
   return (
     <div>
       <h1>{props.cat.name}</h1>
@@ -9,4 +9,4 @@ const CatShow = (props) => {
   );
 };
 
-export default CatShow;
+export default CatTile;
