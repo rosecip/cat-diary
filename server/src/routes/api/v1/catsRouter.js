@@ -29,4 +29,14 @@ catsRouter.post("/", async (req, res) => {
   }
 });
 
+catsRouter.get("/:id", async (req, res) => {
+  try {
+    const cat = await Cat.query().findById(req.params.id);
+    const serializedCat = CatSerializer.getSummary(cat);
+    res.status(200).json({ serializedCat });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
 export default catsRouter;
