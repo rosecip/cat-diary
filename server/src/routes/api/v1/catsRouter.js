@@ -9,7 +9,7 @@ const catsRouter = new express.Router();
 catsRouter.get("/", async (req, res) => {
   try {
     const cats = await Cat.query();
-    const serializedCats = cats.map((cat) => CatSerializer.getSummary(cat));
+    const serializedCats = await Promise.all(cats.map((cat) => CatSerializer.getSummary(cat)));
     res.status(200).json({ cats: serializedCats });
   } catch (error) {
     res.status(500).json({ errors });
@@ -32,7 +32,7 @@ catsRouter.post("/", async (req, res) => {
 catsRouter.get("/:id", async (req, res) => {
   try {
     const cat = await Cat.query().findById(req.params.id);
-    const serializedCat = CatSerializer.getSummary(cat);
+    const serializedCat = await CatSerializer.getSummary(cat);
     res.status(200).json({ serializedCat });
   } catch (error) {
     res.status(500).json({ error });
