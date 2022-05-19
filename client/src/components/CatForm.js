@@ -1,46 +1,46 @@
-import React, { useState } from "react";
-import translateServerErrors from "../services/translateServerErrors";
-import ErrorList from "./layout/ErrorList";
-import { Redirect } from "react-router-dom";
+import React, { useState } from "react"
+import translateServerErrors from "../services/translateServerErrors"
+import ErrorList from "./layout/ErrorList"
+import { Redirect } from "react-router-dom"
 
 const CatForm = (props) => {
-  const catBreeds = ["", "Maine Coon", "American Shorthair", "not sure..just a weird little guy"];
+  const catBreeds = ["", "Maine Coon", "American Shorthair", "not sure..just a weird little guy"]
 
   const [newCat, setNewCat] = useState({
     name: "",
     breed: "",
-  });
+  })
 
-  const [errors, setErrors] = useState({});
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [errors, setErrors] = useState({})
+  const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const catBreedOptions = catBreeds.map((breed) => {
     return (
       <option key={breed} value={breed}>
         {breed}
       </option>
-    );
-  });
+    )
+  })
 
   const onChangeHandler = (event) => {
     setNewCat({
       ...newCat,
       [event.currentTarget.name]: event.currentTarget.value,
-    });
-  };
+    })
+  }
 
   const clearForm = () => {
     setNewCat({
       name: "",
       breed: "",
-    });
-  };
+    })
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    postCat(newCat);
-    clearForm();
-  };
+    event.preventDefault()
+    postCat(newCat)
+    clearForm()
+  }
 
   const postCat = async (newCat) => {
     try {
@@ -50,27 +50,27 @@ const CatForm = (props) => {
           "Content-Type": "application/json",
         }),
         body: JSON.stringify(newCat),
-      });
+      })
       if (!response.ok) {
         if (response.status === 422) {
-          const body = await response.json();
-          const newErrors = translateServerErrors(body.errors);
-          return setErrors(newErrors);
+          const body = await response.json()
+          const newErrors = translateServerErrors(body.errors)
+          return setErrors(newErrors)
         } else {
-          const errorMessage = `${response.status} (${respoonse.statusText})`;
-          const error = new Error(errorMessage);
-          throw error;
+          const errorMessage = `${response.status} (${respoonse.statusText})`
+          const error = new Error(errorMessage)
+          throw error
         }
       } else {
-        setShouldRedirect(true);
+        setShouldRedirect(true)
       }
     } catch (err) {
-      console.error(`Error in fetch: ${err.message}`);
+      console.error(`Error in fetch: ${err.message}`)
     }
-  };
+  }
 
   if (shouldRedirect) {
-    return <Redirect push to="/" />;
+    return <Redirect push to="/" />
   }
 
   return (
@@ -93,7 +93,7 @@ const CatForm = (props) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default CatForm;
+export default CatForm

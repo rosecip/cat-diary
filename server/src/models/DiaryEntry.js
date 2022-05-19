@@ -1,8 +1,8 @@
-const Model = require("./Model.js");
+const Model = require("./Model.js")
 
 class DiaryEntry extends Model {
   static get tableName() {
-    return "diaryEntries";
+    return "diaryEntries"
   }
 
   static get jsonSchema() {
@@ -15,11 +15,11 @@ class DiaryEntry extends Model {
         date: { type: "string" },
         entry: { type: "string" },
       },
-    };
+    }
   }
 
   static get relationMappings() {
-    const { Cat, User } = require("./index.js");
+    const { Cat, User } = require("./index.js")
     return {
       cats: {
         relation: Model.BelongsToOneRelation,
@@ -37,8 +37,8 @@ class DiaryEntry extends Model {
           to: "users.id",
         },
       },
-    };
+    }
   }
 }
 
-module.exports = DiaryEntry;
+module.exports = DiaryEntry

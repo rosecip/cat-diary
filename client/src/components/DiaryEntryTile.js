@@ -1,15 +1,19 @@
-import React from "react";
+import React from "react"
 
 const DiaryEntryTile = (props) => {
-  let metCat = "";
-  let ownCat = "";
+  let metCat = ""
+  let ownCat = ""
 
-  if (props.metCat === false) {
-    metCat = "This is my first time meeting this cat!";
+  if (props.metCat === true) {
+    metCat = "This is my first time meeting this cat!"
+  } else {
+    metCat = ""
   }
 
   if (props.ownCat === true) {
-    ownCat = "This is my cat!";
+    ownCat = "This is my cat!"
+  } else {
+    ownCat = ""
   }
 
   return (
@@ -20,7 +24,7 @@ const DiaryEntryTile = (props) => {
       <h3>{props.date}</h3>
       <p>{props.entry}</p>
     </div>
-  );
-};
+  )
+}
 
-export default DiaryEntryTile;
+export default DiaryEntryTile

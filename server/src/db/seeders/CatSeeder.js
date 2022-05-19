@@ -1,4 +1,4 @@
-import Cat from "../../models/Cat.js";
+import Cat from "../../models/Cat.js"
 
 class CatSeeder {
   static async seed() {
@@ -10,16 +10,16 @@ class CatSeeder {
       {
         name: "Olive",
         breed: "weird little guy",
-      }
-    ];
+      },
+    ]
 
     for (const singleCatData of catData) {
-      const currentCat = await Cat.query().findOne(singleCatData);
+      const currentCat = await Cat.query().findOne(singleCatData)
       if (!currentCat) {
-        await Cat.query().insert(singleCatData);
+        await Cat.query().insert(singleCatData)
       }
     }
   }
 }
 
-export default CatSeeder;
+export default CatSeeder
