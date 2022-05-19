@@ -4,6 +4,7 @@ import { ValidationError } from "objection"
 import cleanUserInput from "../../../services/cleanUserInput.js"
 import CatSerializer from "../../../serializers/CatSerializer.js"
 import catsDiaryEntriesRouter from "../catsDiaryEntriesRouter.js"
+import uploadImage from "../../../services/uploadImage.js"
 
 const catsRouter = new express.Router()
 
@@ -17,10 +18,16 @@ catsRouter.get("/", async (req, res) => {
   }
 })
 
-catsRouter.post("/", async (req, res) => {
-  const body = cleanUserInput(req.body)
+catsRouter.post("/", uploadImage.single("image"), async (req, res) => {
+  const { name, breed } = cleanUserInput(req.body)
+  console.log()
   try {
-    const newCat = await Cat.query().insertAndFetch(body)
+    const newCat = await Cat.query().insertAndFetch({
+      name,
+      breed,
+      image: req.file.location
+    })
+
     res.status(201).json({ newCat })
   } catch (error) {
     if (error instanceof ValidationError) {

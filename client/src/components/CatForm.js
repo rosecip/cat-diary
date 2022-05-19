@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import translateServerErrors from "../services/translateServerErrors"
 import ErrorList from "./layout/ErrorList"
 import { Redirect } from "react-router-dom"
+import Dropzone from "react-dropzone"
 
 const CatForm = (props) => {
   const catBreeds = ["", "Maine Coon", "American Shorthair", "not sure..just a weird little guy"]
@@ -9,10 +10,14 @@ const CatForm = (props) => {
   const [newCat, setNewCat] = useState({
     name: "",
     breed: "",
+    image: {},
   })
 
   const [errors, setErrors] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [uploadedImage, setUploadedImage] = useState({
+    preview: "",
+  })
 
   const catBreedOptions = catBreeds.map((breed) => {
     return (
@@ -33,6 +38,20 @@ const CatForm = (props) => {
     setNewCat({
       name: "",
       breed: "",
+      image: {},
+    })
+    setUploadedImage({
+      preview: "",
+    })
+  }
+
+  const handleImageUpload = (catImage) => {
+    setNewCat({
+      ...newCat,
+      image: catImage[0],
+    })
+    setUploadedImage({
+      preview: URL.createObjectURL(catImage[0])
     })
   }
 
@@ -42,22 +61,25 @@ const CatForm = (props) => {
     clearForm()
   }
 
-  const postCat = async (newCat) => {
+  const postCat = async () => {
+    const catBody = new FormData()
+    catBody.append("name", newCat.name)
+    catBody.append("breed", newCat.breed)
+    catBody.append("image", newCat.image)
     try {
       const response = await fetch("/api/v1/cats", {
         method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify(newCat),
+        headers: { Accept: "image/jpeg" },
+        body: catBody,
       })
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json()
+          
           const newErrors = translateServerErrors(body.errors)
           return setErrors(newErrors)
         } else {
-          const errorMessage = `${response.status} (${respoonse.statusText})`
+          const errorMessage = `${response.status} (${response.statusText})`
           const error = new Error(errorMessage)
           throw error
         }
@@ -88,6 +110,23 @@ const CatForm = (props) => {
             {catBreedOptions}
           </select>
         </label>
+        <Dropzone onDrop={handleImageUpload}>
+          {({ getRootProps, getInputProps }) => (
+            <section>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <input
+                  className="button"
+                  type="add"
+                  onChange={onChangeHandler}
+                  value="add image :)"
+                />
+                <p>Upload a picture of this cat</p>
+              </div>
+            </section>
+          )}
+        </Dropzone>
+        <img src={uploadedImage.preview} />
         <div>
           <input type="submit" value="Add Cat!!!" />
         </div>

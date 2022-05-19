@@ -3,7 +3,7 @@ import DiaryEntrySerializer from "./DiaryEntrySerializer.js";
 class CatSerializer {
   static async getSummary(cat) {
     try {
-      const allowedAttributes = ["id", "name", "breed"];
+      const allowedAttributes = ["id", "name", "breed", "image"];
 
       let serializedCats = {};
       for (const attribute of allowedAttributes) {

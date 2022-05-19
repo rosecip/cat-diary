@@ -12,6 +12,7 @@ class Cat extends Model {
       properties: {
         name: { type: "string" },
         breed: { type: "string" },
+        image: { type: "string" },
       },
     }
   }
