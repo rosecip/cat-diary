@@ -1,4 +1,4 @@
-import DiaryEntry from "../../models/DiaryEntry.js";
+import DiaryEntry from "../../models/DiaryEntry.js"
 
 class DiaryEntrySeeder {
   static async seed() {
@@ -19,15 +19,15 @@ class DiaryEntrySeeder {
         catId: 1,
         userId: 1,
       },
-    ];
+    ]
 
     for (const singleDiaryEntryData of diaryEntryData) {
-      const currentDiaryEntry = await DiaryEntry.query().findOne(singleDiaryEntryData);
+      const currentDiaryEntry = await DiaryEntry.query().findOne(singleDiaryEntryData)
       if (!currentDiaryEntry) {
-        await DiaryEntry.query().insert(singleDiaryEntryData);
+        await DiaryEntry.query().insert(singleDiaryEntryData)
       }
     }
   }
 }
 
-export default DiaryEntrySeeder;
+export default DiaryEntrySeeder
