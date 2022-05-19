@@ -10,6 +10,7 @@ exports.up = async (knex) => {
     table.bigIncrements("id")
     table.string("name")
     table.string("breed").notNullable()
+    table.string("image")
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
   })

@@ -5,6 +5,7 @@ const CatTile = (props) => {
     <div>
       <h1>{props.cat.name}</h1>
       <p>{props.cat.breed}</p>
+      <img src={props.cat.image}/>
     </div>
   )
 }
