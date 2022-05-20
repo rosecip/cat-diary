@@ -35,7 +35,7 @@ const CatShow = (props) => {
 
   const postDiaryEntries = async (newDiaryEntry) => {
     try {
-      const response = await fetch(`/api/v1/cats/${catId}/diaryEntries`, {
+      const response = await fetch(`/api/v1/cats/${catId}/diary-entries`, {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -76,10 +76,10 @@ const CatShow = (props) => {
   })
 
   return (
-    <div>
+    <div className="diary-form-page">
       <DiaryEntryForm name={cat.name} postDiaryEntries={postDiaryEntries} errors={errors} />
-      <h1>{cat.name}</h1>
-      <h3>{cat.breed}</h3>
+      <p>{cat.name}</p>
+      <p>{cat.breed}</p>
       {diaryEntryTiles}
     </div>
   )

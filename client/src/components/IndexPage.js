@@ -4,8 +4,7 @@ import CatForm from "./CatForm.js"
 
 const IndexPage = (props) => {
   return (
-    <div>
-      <CatForm />
+    <div className="index-page">
       <CatList />
     </div>
   )

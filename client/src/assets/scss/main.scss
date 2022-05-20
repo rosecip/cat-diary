@@ -1,6 +1,8 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 // place global css here
 *,
 *::before,
@@ -11,4 +13,106 @@
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+}
+
+body {
+  background-color: #f4f3ee;
+}
+
+.top-bar {
+  background-color: #8a817c;
+}
+
+.index-page {
+  margin: 5em;
+  color: #463f3a;
+  font-family: "Righteous", cursive;
+}
+
+li {
+  list-style: none;
+}
+
+.cat-image {
+  object-fit: cover;
+  height: 300px;
+  width: 300px;
+  display: inline-block;
+  margin: 50px 30px 20px;
+  padding: 15px 15px 30px;
+  padding-bottom: 75px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+.button {
+  width: 7em;
+  border-radius: 10px;
+  background-color: #bcb8b1;
+  box-shadow: 0 9px #8a817c;
+  color: #463f3a;
+  font-family: "Righteous", cursive;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.button:hover {
+  background-color: #bcb8b1;
+}
+
+.button:active {
+  transform: translateY(4px);
+}
+
+.button:focus {
+  background-color: #bcb8b1;
+}
+
+.add-cat-text {
+  font-family: "Righteous", cursive;
+}
+
+.diary-form-page {
+  margin: 5em;
+  color: #463f3a;
+  font-family: "Righteous", cursive;
+}
+
+a {
+  color: #463f3a;
+}
+
+a:hover {
+  color: white;
+}
+
+.cat-form {
+  margin: 5em;
+  color: #463f3a;
+}
+
+.form-field {
+  height: 3em;
+  width: 15em;
+  border-radius: 10px;
+}
+
+.form-text {
+  color: #463f3a;
+  font-weight: bold;
+  font-size: 19px;
+  font-family: "Righteous", cursive;
+}
+
+.cat-list-container li {
+  display: inline-block;
+  border-color: #463f3a;
+  margin: 1em;
+  text-align: center;
+}
+
+.cat-tile-name {
+  font-size: 1.5em;
+  color: #8a817c;
+  font-size: 2em;
 }

@@ -5,13 +5,13 @@ const DiaryEntryTile = (props) => {
   let ownCat = ""
 
   if (props.metCat === true) {
-    metCat = "This is my first time meeting this cat!"
+    metCat = "this is my first time meeting this cat!"
   } else {
     metCat = ""
   }
 
   if (props.ownCat === true) {
-    ownCat = "This is my cat!"
+    ownCat = "this is my cat!"
   } else {
     ownCat = ""
   }
@@ -21,7 +21,7 @@ const DiaryEntryTile = (props) => {
       diary entry:
       <h3>{metCat}</h3>
       <h3>{ownCat}</h3>
-      <h3>{props.date}</h3>
+      <p>{props.date}</p>
       <p>{props.entry}</p>
     </div>
   )

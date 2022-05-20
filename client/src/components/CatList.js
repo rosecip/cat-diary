@@ -36,8 +36,11 @@ const CatList = (props) => {
 
   return (
     <div>
-      <h1>CATS</h1>
-      {catListItems}
+      <Link to="/add-new-cat">add a new cat</Link>
+      <p>CATS</p>
+      <div className="cat-list-container">
+        {catListItems}
+      </div>
     </div>
   )
 }

@@ -47,6 +47,6 @@ catsRouter.get("/:id", async (req, res) => {
   }
 })
 
-catsRouter.use("/:catId/diaryEntries", catsDiaryEntriesRouter)
+catsRouter.use("/:catId/diary-entries", catsDiaryEntriesRouter)
 
 export default catsRouter
