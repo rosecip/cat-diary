@@ -19,6 +19,13 @@ const CatForm = (props) => {
     preview: "",
   })
 
+  let catImage
+  if (uploadedImage.preview === "") {
+    catImage = ""
+  } else {
+    catImage = "cat-image"
+  }
+
   const catBreedOptions = catBreeds.map((breed) => {
     return (
       <option key={breed} value={breed}>
@@ -96,17 +103,17 @@ const CatForm = (props) => {
   }
 
   return (
-    <div>
-      <h1>add a cat =^.^=</h1>
+    <div className="cat-form">
+      <h1 className="add-cat-text">add a cat</h1>
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" name="name" onChange={onChangeHandler} />
+        <label className="form-text">
+          name:
+          <input className="form-field" type="text" name="name" onChange={onChangeHandler} />
         </label>
-        <label>
-          Breed:
-          <select type="text" name="breed" onChange={onChangeHandler}>
+        <label className="form-text">
+          breed:
+          <select className="form-field" type="text" name="breed" onChange={onChangeHandler}>
             {catBreedOptions}
           </select>
         </label>
@@ -119,16 +126,15 @@ const CatForm = (props) => {
                   className="button"
                   type="add"
                   onChange={onChangeHandler}
-                  value="add image :)"
+                  value="add image"
                 />
-                <p>Upload a picture of this cat</p>
               </div>
             </section>
           )}
         </Dropzone>
-        <img src={uploadedImage.preview} />
+        <img className={catImage} src={uploadedImage.preview} />
         <div>
-          <input type="submit" value="Add Cat!!!" />
+          <input className="button" type="submit" value="post cat" />
         </div>
       </form>
     </div>

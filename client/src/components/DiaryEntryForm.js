@@ -55,8 +55,8 @@ const DiaryEntry = (props) => {
   }
 
   return (
-    <div>
-      <h1>Did you meet this cat?</h1>
+    <div className="diary-entry-page">
+      <p>Did you meet this cat?</p>
       <ErrorList errors={props.errors} />
       <form onSubmit={handleSubmit}>
         <input
@@ -85,7 +85,7 @@ const DiaryEntry = (props) => {
           <input type="text" name="entry" value={newDiaryEntry.entry} onChange={onChangeHandler} />
         </label>
         <div>
-          <input type="submit" value="Publish Diary Entry" />
+          <input className="button" type="submit" value="publish" />
         </div>
       </form>
     </div>
