@@ -43,9 +43,7 @@ const DiaryEntry = (props) => {
       ownCat: false,
       date: "",
       entry: "",
-    })
-    (!metCatBox.checked)
-    (!ownCatBox.checked)
+    })(!metCatBox.checked)(!ownCatBox.checked)
   }
 
   const handleSubmit = (event) => {
@@ -56,9 +54,30 @@ const DiaryEntry = (props) => {
 
   return (
     <div className="diary-entry-page">
-      <p>Did you meet this cat?</p>
+      <p className="write-diary-entry">write a diary entry</p>
       <ErrorList errors={props.errors} />
+        <label className="form-text">
+          i met {props.name} on:
+          <input
+            className="form-field diary-form-field-1"
+            type="text"
+            name="date"
+            value={newDiaryEntry.date}
+            onChange={onChangeHandler}
+          />
+        </label>
+        <label className="form-text">
+          share your experience!
+          <input
+            className="form-field diary-form-field-2"
+            type="text"
+            name="entry"
+            value={newDiaryEntry.entry}
+            onChange={onChangeHandler}
+          />
+        </label>
       <form onSubmit={handleSubmit}>
+        <div className="button-div">
         <input
           type="radio"
           id="metCat"
@@ -66,7 +85,9 @@ const DiaryEntry = (props) => {
           value={newDiaryEntry.metCat}
           onClick={checkCatStatus}
         />
-        <label for="metCat">This is my first time meeting {props.name}! </label>
+        <label className="form-text" for="metCat">
+          this is my first time meeting {props.name}!{" "}
+        </label>
         <br />
         <input
           type="radio"
@@ -75,17 +96,12 @@ const DiaryEntry = (props) => {
           value={newDiaryEntry.ownCat}
           onClick={checkCatStatus}
         />
-        <label for="metCat">{props.name} is my cat!</label>
-        <label>
-          When?
-          <input type="text" name="date" value={newDiaryEntry.date} onChange={onChangeHandler} />
-        </label>
-        <label>
-          Share your experience =^.^=
-          <input type="text" name="entry" value={newDiaryEntry.entry} onChange={onChangeHandler} />
+        <label className="form-text" for="metCat">
+          {props.name} is my cat!
         </label>
         <div>
-          <input className="button" type="submit" value="publish" />
+            <input className="button publish-button" type="submit" value="publish" />
+          </div>
         </div>
       </form>
     </div>

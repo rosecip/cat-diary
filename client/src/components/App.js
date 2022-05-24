@@ -10,6 +10,7 @@ import TopBar from "./layout/TopBar"
 import IndexPage from "./IndexPage"
 import CatShow from "./CatShow"
 import CatForm from "./CatForm"
+import HomePage from "./HomePage"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined)
@@ -30,9 +31,7 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/">
-          <Redirect to="/cats" />
-        </Route>
+        <Route exact path="/" component={HomePage}/>
         <Route exact path="/cats" component={IndexPage} />
         <Route exact path="/cats/:id" component={CatShow} />
         <Route exact path="/users/new" component={RegistrationForm} />

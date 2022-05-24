@@ -5,11 +5,11 @@ import SignOutButton from "../authentication/SignOutButton";
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
     <li key="sign-in">
-      <Link to="/user-sessions/new">Sign In</Link>
+      <Link className="button top-bar-button" to="/user-sessions/new">sign in</Link>
     </li>,
     <li key="sign-up">
-      <Link to="/users/new" className="button">
-        Sign Up
+      <Link to="/users/new" className="button top-bar-button sign-up-button">
+        sign up
       </Link>
     </li>,
   ];
@@ -20,14 +20,17 @@ const TopBar = ({ user }) => {
     </li>,
   ];
 
+  const heart = (
+    <p className="heart-icon">&hearts;</p>
+  )
+
   return (
     <div className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text">App</li>
           <li>
-            <Link to="/">Cat Diary</Link>
-          </li>
+            <Link className="home-button" to="/">cat diary &hearts;</Link>
+            </li>
         </ul>
       </div>
       <div className="top-bar-right">

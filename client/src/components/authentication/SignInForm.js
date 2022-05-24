@@ -1,33 +1,33 @@
-import React, { useState } from "react";
-import config from "../../config";
-import FormError from "../layout/FormError";
+import React, { useState } from "react"
+import config from "../../config"
+import FormError from "../layout/FormError"
 
 const SignInForm = () => {
-  const [userPayload, setUserPayload] = useState({ email: "", password: "" });
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [userPayload, setUserPayload] = useState({ email: "", password: "" })
+  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [errors, setErrors] = useState({})
 
   const validateInput = (payload) => {
-    setErrors({});
-    const { email, password } = payload;
-    const emailRegexp = config.validation.email.regexp;
-    let newErrors = {};
+    setErrors({})
+    const { email, password } = payload
+    const emailRegexp = config.validation.email.regexp
+    let newErrors = {}
     if (!email.match(emailRegexp)) {
       newErrors = {
         ...newErrors,
         email: "is invalid",
-      };
+      }
     }
 
     if (password.trim() === "") {
       newErrors = {
         ...newErrors,
         password: "is required",
-      };
+      }
     }
 
-    setErrors(newErrors);
-  };
+    setErrors(newErrors)
+  }
 
   const onSubmit = async (event) => {
     event.preventDefault()
@@ -39,17 +39,17 @@ const SignInForm = () => {
           body: JSON.stringify(userPayload),
           headers: new Headers({
             "Content-Type": "application/json",
-          })
+          }),
         })
-        if(!response.ok) {
+        if (!response.ok) {
           const errorMessage = `${response.status} (${response.statusText})`
           const error = new Error(errorMessage)
-          throw(error)
+          throw error
         }
         const userData = await response.json()
         setShouldRedirect(true)
       }
-    } catch(err) {
+    } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
     }
   }
@@ -58,28 +58,35 @@ const SignInForm = () => {
     setUserPayload({
       ...userPayload,
       [event.currentTarget.name]: event.currentTarget.value,
-    });
-  };
+    })
+  }
 
   if (shouldRedirect) {
-    location.href = "/";
+    location.href = "/"
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
-      <h1>Sign In</h1>
+    <div className="grid-container reg-form" onSubmit={onSubmit}>
+      <h1 className="form-header-text">Sign In</h1>
       <form>
         <div>
-          <label>
+          <label className="form-text">
             Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+            <input
+              className="form-field"
+              type="text"
+              name="email"
+              value={userPayload.email}
+              onChange={onInputChange}
+            />
             <FormError error={errors.email} />
           </label>
         </div>
         <div>
-          <label>
+          <label className="form-text">
             Password
             <input
+              className="form-field"
               type="password"
               name="password"
               value={userPayload.password}
@@ -93,7 +100,7 @@ const SignInForm = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default SignInForm;
+export default SignInForm

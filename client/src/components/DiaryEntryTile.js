@@ -1,28 +1,39 @@
 import React from "react"
 
 const DiaryEntryTile = (props) => {
-  let metCat = ""
-  let ownCat = ""
+  let iveMetCat = ""
+  let iOwnCat = ""
+  let heart1 = ""
+  let heart2 = ""
 
   if (props.metCat === true) {
-    metCat = "this is my first time meeting this cat!"
+    iveMetCat = `this is my first time meeting ${props.name}!`
+    heart1 = <p>&hearts;&nbsp;</p>
   } else {
-    metCat = ""
+    iveMetCat = ""
+    heart1 = ""
   }
 
   if (props.ownCat === true) {
-    ownCat = "this is my cat!"
+    iOwnCat = `${props.name} is my cat!`
+    heart2 = <p>&hearts;&nbsp;</p>
   } else {
-    ownCat = ""
+    iOwnCat = ""
+    heart2 = ""
   }
 
   return (
-    <div>
-      diary entry:
-      <h3>{metCat}</h3>
-      <h3>{ownCat}</h3>
-      <p>{props.date}</p>
+    <div className="diary-entry-tile">
+      <p>today is {props.date}</p>
       <p>{props.entry}</p>
+      <div className="met-own-cat">
+        <p className="cat-heart-line heart">{heart1}</p>
+        <p className="cat-heart-line met-cat">{iveMetCat}</p>
+      </div>
+      <div className="met-own-cat">
+        <p className="cat-heart-line heart">{heart2}</p>
+        <p className="cat-heart-line own-cat">{iOwnCat}</p>
+      </div>
     </div>
   )
 }
