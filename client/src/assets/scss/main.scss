@@ -17,10 +17,16 @@
 
 body {
   background-color: #f4f3ee;
+  color: #463f3a;
 }
 
 .top-bar {
-  background-color: #8a817c;
+  background-color: #e0afa0;
+  height: 10em;
+}
+
+.menu {
+  background-color: #e0afa0 !important;
 }
 
 .index-page {
@@ -35,14 +41,36 @@ li {
 
 .cat-image {
   object-fit: cover;
-  height: 300px;
-  width: 300px;
-  display: inline-block;
+  height: 350px;
+  width: 350px;
+  display: inline;
   margin: 50px 30px 20px;
   padding: 15px 15px 30px;
   padding-bottom: 75px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   background-color: white;
+  transition: width 1s, height 1s;
+  text-align: center;
+}
+
+.list-cat-image:hover {
+  width: 400px;
+  height: 400px;
+}
+
+.cat-list-container li {
+  display: inline-block;
+  border-color: #463f3a;
+  margin: 1em;
+  text-align: center;
+}
+
+.cat-list-container {
+  text-align: center;
+}
+
+.cat-tile {
+  text-align: center;
 }
 
 .button {
@@ -68,7 +96,7 @@ li {
   background-color: #bcb8b1;
 }
 
-.add-cat-text {
+.form-header-text {
   font-family: "Righteous", cursive;
 }
 
@@ -76,6 +104,11 @@ li {
   margin: 5em;
   color: #463f3a;
   font-family: "Righteous", cursive;
+}
+
+.diary-entry-page {
+  padding: 15px 15px 30px;
+  margin: 50px 30px 20px;
 }
 
 a {
@@ -86,7 +119,7 @@ a:hover {
   color: white;
 }
 
-.cat-form {
+.form {
   margin: 5em;
   color: #463f3a;
 }
@@ -104,15 +137,195 @@ a:hover {
   font-family: "Righteous", cursive;
 }
 
-.cat-list-container li {
-  display: inline-block;
-  border-color: #463f3a;
-  margin: 1em;
-  text-align: center;
-}
-
 .cat-tile-name {
   font-size: 1.5em;
-  color: #8a817c;
+  color: #463f3a;
   font-size: 2em;
+}
+
+.diary-entry-tile {
+  position: relative;
+  margin: 40px auto;
+  width: 400px;
+  height: 350px;
+  background: white;
+  border-radius: 2px;
+  padding: 1em;
+}
+
+.cat-image-header {
+  text-align: center;
+  margin: auto;
+}
+
+.diary-entry-tile::before,
+.diary-entry-tile::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  width: 40%;
+  height: 10px;
+  box-shadow: 0 5px 14px #8a817c;
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+}
+
+.diary-entry-tile::before {
+  left: 15px;
+  transform: skew(-5deg) rotate(-5deg);
+}
+
+.diary-entry-tile::after {
+  right: 15px;
+  transform: skew(5deg) rotate(5deg);
+}
+
+.diary-entry-tile:hover::before,
+.diary-entry-tile:hover::after {
+  box-shadow: 0 2px 14px #8a817c;
+}
+
+.diary-entry-tile:hover::before {
+  left: 5px;
+}
+
+.diary-entry-tile:hover::after {
+  right: 5px;
+}
+
+.cat-heart-line {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.heart {
+  color: #e0afa0;
+}
+
+.button-div {
+  display: inline;
+}
+
+.top-bar-button {
+  margin-left: 1em;
+}
+
+.home-button {
+  font-family: "Righteous", cursive;
+  font-size: 40px;
+  margin-left: 1em;
+  transition: font-size 1s;
+}
+
+.home-button:hover {
+  font-size: 43px;
+  color: #463f3a;
+}
+
+.home-button:focus {
+  color: #463f3a;
+}
+
+.home-page {
+  padding-top: 10em;
+  text-align: center;
+  font-family: "Righteous", cursive;
+}
+
+.meet-the-cats {
+  font-size: 6em;
+  color: #463f3a;
+  text-shadow: 6px 6px 0px #e0afa0;
+  transition: font-size 1s;
+}
+
+.meet-the-cats:hover {
+  font-size: 6.1em;
+}
+
+.welcome {
+  font-size: 8em;
+  color: #463f3a;
+  text-shadow: 6px 6px 0px #e0afa0;
+}
+
+.add-cat {
+  margin-right: 1em;
+}
+
+.random-cat {
+  margin-left: 1em;
+}
+
+.home-page-buttons {
+  margin: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.button-heart {
+  font-size: 2em;
+  color: #463f3a;
+}
+
+.diary-page-head {
+  margin: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.diary-entry-page {
+  text-align: left;
+}
+
+.diary-form-field-1 {
+  width: 400px;
+}
+
+.diary-form-field-2 {
+  width: 400px;
+  height: 200px;
+}
+
+.diary-page-cat-tile {
+  padding: 15px 15px 30px;
+  margin: 50px 30px 20px;
+}
+
+.cat-name {
+  font-size: 40px;
+  text-align: bottom;
+  text-shadow: 3px 3px 0px #e0afa0;
+}
+
+.cat-breed {
+ font-size: 19px;
+}
+
+.cat-image-preview {
+  margin-top: 0;
+}
+
+.write-diary-entry {
+  font-size: 40px;
+  text-align: center;
+  text-shadow: 3px 3px 0px #e0afa0;
+}
+
+.publish-button {
+  margin-top: 1em
+}
+
+.sign-up-button {
+  margin-right: 40px;
+}
+
+.reg-form {
+  margin-top: 6em
+}
+
+.cat-form {
+  margin-left: 22em
 }

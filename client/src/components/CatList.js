@@ -34,13 +34,22 @@ const CatList = (props) => {
     )
   })
 
+  let randomCatId = Math.floor(Math.random() * catListItems.length + 1)
+  let catIdLink = `/cats/${randomCatId}`
+  const heart = (<p className="button-heart">&hearts;</p>)
+
   return (
     <div>
-      <Link to="/add-new-cat">add a new cat</Link>
-      <p>CATS</p>
-      <div className="cat-list-container">
-        {catListItems}
+      <div className="home-page-buttons">
+        <Link className="button add-cat" to="/add-new-cat">
+          add a new cat
+        </Link>
+        {heart}
+        <Link className="button random-cat" to={catIdLink}>
+          random cat
+        </Link>
       </div>
+      <div className="cat-list-container">{catListItems}</div>
     </div>
   )
 }

@@ -71,16 +71,26 @@ const CatShow = (props) => {
         ownCat={diaryEntry.ownCat}
         date={diaryEntry.date}
         entry={diaryEntry.entry}
+        name={cat.name}
       />
     )
   })
 
   return (
     <div className="diary-form-page">
-      <DiaryEntryForm name={cat.name} postDiaryEntries={postDiaryEntries} errors={errors} />
-      <p>{cat.name}</p>
-      <p>{cat.breed}</p>
-      {diaryEntryTiles}
+      <div className="diary-page-head">
+        <div className="diary-form">
+          <DiaryEntryForm name={cat.name} postDiaryEntries={postDiaryEntries} errors={errors} />
+          </div>
+      <div className="diary-page-cat-tile">
+        <p className="cat-name">{cat.name}</p>
+        <img className="cat-image cat-image-preview" src={cat.image}></img>
+        <p className="cat-breed">{cat.breed}</p>
+        </div>
+        </div>
+      <div className="diary-entry-tiles">
+        {diaryEntryTiles}
+      </div>
     </div>
   )
 }

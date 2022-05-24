@@ -5,7 +5,8 @@ import { Redirect } from "react-router-dom"
 import Dropzone from "react-dropzone"
 
 const CatForm = (props) => {
-  const catBreeds = ["", "Maine Coon", "American Shorthair", "not sure..just a weird little guy"]
+  const catBreedsArray = ["", "Ragdoll", "Exotic Shorthair", "British Shorthair", "Persian", "Maine Coon", "American Shorthair", "Devon Rex", "Sphynx", "Scottish Fold", "Abyssinian", "Oriental", "Siamese", "Norwegian Forest Cat", "Cornish Rex", "Bengal", "Russian Blue", "Siberian", "Burmese", "Birmin", "Tonkinese”", "Ocicat", "Selkirk Rex", "Ragamuffin", "American Curl", "Japanese Bobtail", "Manx", "Egyptian Man", "Somali", "Balinese", "Singapura", "Colorpoint Shorthair", "Lykoi", "Chartreux", "Turkish Angora", "European Burmese", "Bombay", "Khao Manee", "Burmilla", "Korat", "American Bobtail", "Havana Brown", "LaPerm", "Turkish Van", "American Wirehair", "California Spangled", "Cymric", "Himalayan", "Munchkin", "Nebelung", "Pixie Bob", "Savannah", "Snowshoe", "Toyger", "York Chocolate", "Aegean", "Australian Mist", "American Polydactyl", "Arabian Mau", "Asian Semi Longhair", "Bambino", "Brazilian Shorthair", "British Longhair", "Chantilly Tiffany", "Chausie", "Cheetoh", "Cyprus", "Javanese", "Donskoy", "Peterbald", "Ukranian Levkoy", "Elf Cat", "Dwelf", "Minskin", "Serengeti Cat", "Napoleon Cat", "Thai Cat", "Asian Cat"]
+  const catBreeds = catBreedsArray.sort()
 
   const [newCat, setNewCat] = useState({
     name: "",
@@ -103,8 +104,8 @@ const CatForm = (props) => {
   }
 
   return (
-    <div className="cat-form">
-      <h1 className="add-cat-text">add a cat</h1>
+    <div className="form cat-form">
+      <h1 className="form-header-text">add a cat</h1>
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit}>
         <label className="form-text">
