@@ -57,7 +57,7 @@ const DiaryEntry = (props) => {
       <p className="write-diary-entry">write a diary entry</p>
       <ErrorList errors={props.errors} />
         <label className="form-text">
-          i met {props.name} on:
+          the date today is:
           <input
             className="form-field diary-form-field-1"
             type="text"
