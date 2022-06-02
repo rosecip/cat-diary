@@ -63,6 +63,11 @@ const CatShow = (props) => {
     }
   }
 
+  const deleteDiaryEntry = async (diaryEntryId) => {
+    const response = await fetch(`/api/v1/diary-entries/${diaryEntryId}`)
+
+  }
+
   const diaryEntryTiles = cat.diaryEntries.map((diaryEntry) => {
     return (
       <DiaryEntryTile
