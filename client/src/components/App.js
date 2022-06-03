@@ -33,7 +33,9 @@ const App = (props) => {
       <Switch>
         <Route exact path="/" component={HomePage}/>
         <Route exact path="/cats" component={IndexPage} />
-        <Route exact path="/cats/:id" component={CatShow} />
+        <Route exact path="/cats/:id">
+          <CatShow currentUser={currentUser}/>
+        </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/add-new-cat" component={CatForm}/>

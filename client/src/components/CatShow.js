@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import DiaryEntryTile from "./DiaryEntryTile.js"
 import DiaryEntryForm from "./DiaryEntryForm.js"
 import translateServerErrors from "../services/translateServerErrors.js"
+import { useParams } from "react-router-dom"
 
 const CatShow = (props) => {
   const [cat, setCat] = useState({
@@ -11,8 +12,9 @@ const CatShow = (props) => {
   })
 
   const [errors, setErrors] = useState({})
-
-  const catId = props.match.params.id
+  
+  const params = useParams()
+  const catId = params.id
 
   const fetchCat = async () => {
     try {
@@ -63,15 +65,29 @@ const CatShow = (props) => {
     }
   }
 
+  const handleDelete = (diaryEntryId) => {
+    const updatedDiaryEntries = cat.diaryEntries.filter(
+      (diaryEntry) => diaryEntry.id !== diaryEntryId
+    )
+    setCat({
+      ...cat,
+      diaryEntries: updatedDiaryEntries,
+    })
+  }
+
   const diaryEntryTiles = cat.diaryEntries.map((diaryEntry) => {
     return (
       <DiaryEntryTile
         key={diaryEntry.id}
+        id={diaryEntry.id}
+        userId={diaryEntry.userId}
         metCat={diaryEntry.metCat}
         ownCat={diaryEntry.ownCat}
         date={diaryEntry.date}
         entry={diaryEntry.entry}
         name={cat.name}
+        handleDelete={handleDelete}
+        currentUser={props.currentUser.id}
       />
     )
   })
@@ -81,16 +97,14 @@ const CatShow = (props) => {
       <div className="diary-page-head">
         <div className="diary-form">
           <DiaryEntryForm name={cat.name} postDiaryEntries={postDiaryEntries} errors={errors} />
-          </div>
-      <div className="diary-page-cat-tile">
-        <p className="cat-name">{cat.name}</p>
-        <img className="cat-image cat-image-preview" src={cat.image}></img>
-        <p className="cat-breed">{cat.breed}</p>
         </div>
+        <div className="diary-page-cat-tile">
+          <p className="cat-name">{cat.name}</p>
+          <img className="cat-image cat-image-preview" src={cat.image}></img>
+          <p className="cat-breed">{cat.breed}</p>
         </div>
-      <div className="diary-entry-tiles">
-        {diaryEntryTiles}
       </div>
+      <div className="diary-entry-tiles">{diaryEntryTiles}</div>
     </div>
   )
 }
