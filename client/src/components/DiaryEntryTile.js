@@ -1,6 +1,8 @@
 import React from "react"
+import DeleteDiaryEntry from "./DeleteDiaryEntry"
 
 const DiaryEntryTile = (props) => {
+  
   let iveMetCat = ""
   let iOwnCat = ""
   let heart1 = ""
@@ -33,6 +35,9 @@ const DiaryEntryTile = (props) => {
       <div className="met-own-cat">
         <p className="cat-heart-line heart">{heart2}</p>
         <p className="cat-heart-line own-cat">{iOwnCat}</p>
+      </div>
+      <div>
+        <DeleteDiaryEntry id={props.id} handleDelete={props.handleDelete} />
       </div>
     </div>
   )
