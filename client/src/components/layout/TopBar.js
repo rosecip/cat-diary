@@ -29,7 +29,7 @@ const TopBar = ({ user }) => {
       <div className="top-bar-left">
         <ul className="menu">
           <li>
-            <Link className="home-button" to="/">cat diary &hearts;</Link>
+            <Link className="home-button" to="/cats">cat diary &hearts;</Link>
             </li>
         </ul>
       </div>
